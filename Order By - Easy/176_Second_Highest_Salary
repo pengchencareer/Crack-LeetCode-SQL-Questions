@@ -1,0 +1,5 @@
+Select(Select Distinct Salary
+From Employee
+Order By Salary DESC
+Limit 1,1)
+as SecondHighestSalary

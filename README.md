@@ -1,6 +1,6 @@
 # LeetCode SQL Summary
 
-This is my summary of SQL after completing ALL 149 questions in LeetCode until today Feb 17, 2021.
+This is my summary&experience of SQL after completing ALL 149 questions in LeetCode until today Feb 17, 2021.
 
 Coming Plan:
 1. Answers for all questions will be provided.

@@ -1,0 +1,12 @@
+# Write your MySQL query statement below
+WITH tb1 AS(SELECT LEFT(pay_date,7) AS pay_month, department_id,
+AVG(amount) OVER(PARTITION BY LEFT(pay_date,7),department_id) AS dept_avg_amount,
+AVG(amount) OVER(PARTITION BY LEFT(pay_date,7)) AS company_avg_amount
+FROM salary s JOIN employee e ON s.employee_id=e.employee_id)
+
+SELECT DISTINCT pay_month, department_id,
+(CASE WHEN dept_avg_amount<company_avg_amount THEN 'lower'
+      WHEN dept_avg_amount>company_avg_amount THEN 'higher'
+ ELSE 'same'
+ END) AS comparison
+FROM tb1

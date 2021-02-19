@@ -1,6 +1,8 @@
 # LeetCode SQL Summary
 
-Last updated: Feb 18, 2021
+# Last updated: Feb 18, 2021
+# No. of SQL questions uploaded: 21
+# No. of SQL Instruction added: 0
 
 This is my summary&experience of SQL after completing ALL 149 questions in LeetCode until today Feb 17, 2021.
 

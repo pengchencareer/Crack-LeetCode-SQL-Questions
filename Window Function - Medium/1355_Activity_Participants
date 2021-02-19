@@ -1,0 +1,6 @@
+SELECT activity
+FROM
+(SELECT activity, COUNT(*) AS ac, MAX(COUNT(*)) OVER() AS max_act, MIN(COUNT(*)) OVER() AS min_act
+FROM Friends
+GROUP BY 1) t
+WHERE ac NOT IN (max_act, min_act) # 2 times group by (groupby + window function)

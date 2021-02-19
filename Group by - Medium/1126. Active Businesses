@@ -1,0 +1,13 @@
+# Write your MySQL query statement below
+WITH tb1 AS
+(SELECT event_type, AVG(occurences) AS avg_ocr
+ FROM Events
+ GROUP BY 1
+)
+
+SELECT DISTINCT business_id
+FROM Events e JOIN tb1
+ON e.event_type = tb1.event_type
+WHERE occurences > avg_ocr
+GROUP BY 1
+HAVING COUNT(*) > 1

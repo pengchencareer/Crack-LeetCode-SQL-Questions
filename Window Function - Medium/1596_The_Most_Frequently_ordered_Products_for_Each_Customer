@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+SELECT customer_id, sub.product_id, product_name
+FROM
+(SELECT customer_id, product_id, COUNT(*) AS ct,
+MAX(COUNT(*)) OVER(PARTITION BY customer_id) AS max_ct
+FROM Orders
+GROUP BY 1,2) sub JOIN Products p
+ON sub.product_id = p.product_id
+WHERE ct = max_ct
+ORDER BY 1, 2

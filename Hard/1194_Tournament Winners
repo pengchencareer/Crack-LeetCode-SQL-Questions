@@ -1,0 +1,23 @@
+# Write your MySQL query statement below
+#Reframing the Matches table
+SELECT group_id, MIN(player_id) AS player_id
+FROM
+    (SELECT group_id, sub2.player_id AS player_id
+    FROM
+        (SELECT group_id, sub.player_id AS player_id, SUM(score) AS ttl,
+        MAX(SUM(score)) OVER (PARTITION BY group_id) AS max_ttl
+        FROM
+            (SELECT first_player AS player_id, first_score AS score
+            FROM Matches
+            UNION ALL
+            SELECT second_player, second_score
+            FROM Matches) sub JOIN Players p
+        ON sub.player_id = p.player_id
+        GROUP BY 1,2) sub2
+    WHERE ttl = max_ttl) AS sub3
+GROUP BY 1
+
+# SELECT customer_id, product_id, COUNT(*) AS ct,
+# MAX(COUNT(*)) OVER(PARTITION BY customer_id) AS max_ct
+# FROM Orders
+# GROUP BY 1,2

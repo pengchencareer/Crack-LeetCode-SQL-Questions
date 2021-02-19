@@ -1,0 +1,5 @@
+# Write your MySQL query statement below
+SELECT DISTINCT followee AS follower, COUNT(DISTINCT follower) AS num 
+FROM follow
+WHERE followee in (SELECT follower FROM follow)
+GROUP BY 1

@@ -1,0 +1,23 @@
+# Write your MySQL query statement below
+WITH tb1 AS (SELECT user_id, spend_date, 'both' AS platform, SUM(amount) AS amount
+FROM Spending
+GROUP BY 1, 2
+HAVING COUNT(*) = 2),
+tb2 AS(SELECT user_id, spend_date, platform, amount
+       FROM Spending
+       WHERE (user_id, spend_date) NOT IN (SELECT user_id, spend_date FROM tb1)
+)
+
+SELECT tb3.spend_date, tb3.platform, IFNULL(SUM(amount),0) AS total_amount, COUNT(user_id) AS total_users
+FROM
+    (SELECT DISTINCT(spend_date), 'desktop' platform FROM Spending
+    UNION
+    SELECT DISTINCT(spend_date), 'mobile' platform FROM Spending
+    UNION
+    SELECT DISTINCT(spend_date), 'both' platform FROM Spending) tb3
+LEFT JOIN
+    (SELECT * FROM tb1
+    UNION
+    SELECT * FROM tb2) tb4 
+    ON tb3.spend_date=tb4.spend_date AND tb3.platform=tb4.platform
+GROUP BY 1, 2

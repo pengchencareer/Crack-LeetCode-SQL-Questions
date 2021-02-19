@@ -1,0 +1,120 @@
+# Write your MySQL query statement below
+#stupid method
+
+SELECT 1 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-01-01' AND '2020-01-31') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-01-31'
+
+UNION
+
+SELECT 2 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-02-01' AND '2020-02-29') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-02-29'
+
+UNION
+
+SELECT 3 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-03-01' AND '2020-03-31') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-03-31'
+
+UNION
+
+SELECT 4 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-04-01' AND '2020-04-30') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-04-30'
+
+UNION 
+
+SELECT 5 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-05-01' AND '2020-05-31') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-05-31'
+
+UNION
+
+SELECT 6 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-06-01' AND '2020-06-30') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-06-30'
+
+UNION
+
+SELECT 7 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-07-01' AND '2020-07-31') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-07-31'
+
+UNION
+
+SELECT 8 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-08-01' AND '2020-08-31') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-08-31'
+
+UNION
+
+SELECT 9 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-09-01' AND '2020-09-30') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-09-30'
+
+UNION
+
+SELECT 10 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-10-01' AND '2020-10-31') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-10-31'
+
+UNION
+
+SELECT 11 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-11-01' AND '2020-11-30') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-11-30'
+
+UNION
+
+SELECT 12 AS month, COUNT(DISTINCT d.driver_id) AS active_drivers, COUNT(DISTINCT tb1.ride_id) accepted_rides
+FROM Drivers d LEFT JOIN 
+(SELECT a.ride_id, driver_id, requested_at
+FROM Rides r JOIN AcceptedRides a ON r.ride_id = a.ride_id
+WHERE requested_at BETWEEN '2020-12-01' AND '2020-12-31') tb1 
+ON d.driver_id = tb1.driver_id
+WHERE join_date <= '2020-12-31'

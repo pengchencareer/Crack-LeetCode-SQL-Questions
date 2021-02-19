@@ -1,0 +1,17 @@
+# Write your MySQL query statement below
+(SELECT name AS results
+FROM Users u JOIN Movie_Rating r
+ON u.user_id = r.user_id
+GROUP BY 1
+ORDER BY COUNT(DISTINCT movie_id) DESC, 1
+LIMIT 1)
+
+UNION
+
+(SELECT title
+FROM Movies m JOIN Movie_Rating r
+ON m.movie_id = r.movie_id
+WHERE LEFT(created_at,7) = '2020-02'
+GROUP BY 1
+ORDER BY AVG(rating) DESC, 1
+LIMIT 1)

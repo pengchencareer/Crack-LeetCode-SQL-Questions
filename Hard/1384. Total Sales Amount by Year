@@ -1,0 +1,32 @@
+# Write your MySQL query statement below
+WITH tb1 AS( 
+SELECT s.product_id,product_name,'2018' AS report_year, 
+(CASE WHEN LEFT(period_start,4)='2018' AND LEFT(period_end,4)='2018' THEN DATEDIFF(period_end,period_start)+1
+      WHEN LEFT(period_start,4)='2018' AnD LEFT(period_end,4)!='2018' THEN DATEDIFF('2018-12-31',period_start)+1
+      ELSE 0 
+ END)*average_daily_sales AS total_amount
+ FROM Sales s JOIN Product p ON s.product_id=p.product_id
+UNION
+ SELECT s.product_id,product_name,'2019' AS report_year, 
+(CASE WHEN LEFT(period_start,4)='2018' AND LEFT(period_end,4)='2019' THEN DATEDIFF(period_end,'2019-01-01')+1
+       WHEN LEFT(period_start,4)='2018' AND LEFT(period_end,4)='2020' THEN 365
+       WHEN LEFT(period_start,4)='2019' AND LEFT(period_end,4)='2019' THEN DATEDIFF(period_end,period_start)+1
+       WHEN LEFT(period_start,4)='2019' AND LEFT(period_end,4)='2020' THEN DATEDIFF('2019-12-31', period_start)+1
+       ELSE 0
+ END)*average_daily_sales AS total_amount
+ FROM Sales s JOIN Product p ON s.product_id=p.product_id
+ UNION
+SELECT s.product_id,product_name,'2020' AS report_year, 
+ (CASE WHEN LEFT(period_start,4)='2020' AND LEFT(period_end,4)='2020' THEN DATEDIFF(period_end,period_start)+1
+       WHEN LEFT(period_start,4)='2018' AND LEFT(period_end,4)='2020' THEN DATEDIFF(period_end,'2020-01-01')+1
+       WHEN LEFT(period_start,4)='2019' AND LEFT(period_end,4)='2020' THEN DATEDIFF(period_end,'2020-01-01')+1
+       ELSE 0
+  END)*average_daily_sales AS total_amount
+ FROM Sales s JOIN Product p ON s.product_id=p.product_id
+ )
+ 
+ SELECT * 
+ FROM tb1
+ WHERE total_amount > 0
+ ORDER BY 1,3
+

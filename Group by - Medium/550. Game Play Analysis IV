@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+WITH tb1 AS
+(SELECT player_id, MIN(event_date) AS md
+FROM Activity
+GROUP BY 1)
+
+SELECT ROUND(COUNT(tb1.player_id) / COUNT(DISTINCT a.player_id), 2) AS fraction 
+FROM Activity a LEFT JOIN tb1
+ON a.player_id = tb1.player_id AND a.event_date = tb1.md + 1

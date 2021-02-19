@@ -1,0 +1,16 @@
+# Write your MySQL query statement below
+SELECT user_id, user_name, 
+SUM(CASE WHEN user_id = paid_by THEN -amount
+         WHEN user_id = paid_to THEN amount
+         ELSE 0
+END) + credit AS credit,
+(CASE WHEN
+        (SUM(CASE WHEN user_id = paid_by THEN -amount
+                 WHEN user_id = paid_to THEN amount
+                 ELSE 0
+        END) + credit) < 0 THEN 'Yes'
+     ELSE 'No'
+END)
+AS credit_limit_breached
+FROM Users u, Transactions t
+GROUP BY 1

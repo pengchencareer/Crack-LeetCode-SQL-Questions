@@ -1,0 +1,14 @@
+# Write your MySQL query statement below
+WITH tb1 AS(SELECT Id, Month, Salary, 
+LAG(Salary, 1, 0) OVER(PARTITION BY Id ORDER BY Month) AS p1,
+LAG(Salary, 2, 0) OVER(PARTITION BY Id ORDER BY Month) AS p2,
+ROW_NUMBER() OVER(PARTITION BY Id ORDER BY Month DESC) AS rn
+FROM Employee)
+
+SELECT Id, Month, Salary+p1+p2 AS Salary
+FROM tb1
+WHERE rn<>1
+ORDER BY Id, Month DESC
+
+#Moving Windows - LAG/LEAD
+#Filter: row_number()

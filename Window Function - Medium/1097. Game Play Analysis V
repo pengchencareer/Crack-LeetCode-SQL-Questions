@@ -1,0 +1,15 @@
+# Write your MySQL query statement below
+WITH tb1 AS
+(SELECT player_id, MIN(event_date) AS install_dt 
+ FROM Activity
+GROUP BY 1),
+tb2 AS
+(SELECT player_id, event_date,
+ LEAD(event_date,1) OVER(PARTITION BY player_id ORDER BY event_date) AS tomorrow
+ FROM Activity
+)
+
+SELECT tb1.install_dt, COUNT(tb1.player_id) AS installs, 
+ROUND(IFNULL(SUM(DATEDIFF(tomorrow,install_dt)=1)/COUNT(tb1.player_id),0),2) AS Day1_retention
+FROM tb1 JOIN tb2 ON tb1.player_id = tb2.player_id AND tb1.install_dt=tb2.event_date
+GROUP BY event_date

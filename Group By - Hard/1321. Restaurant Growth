@@ -1,0 +1,8 @@
+# Write your MySQL query statement below
+SELECT tb1.visited_on, SUM(tb2.s) AS amount, ROUND(AVG(tb2.s), 2) AS average_amount
+FROM
+(SELECT visited_on, SUM(amount) AS s FROM Customer GROUP BY 1) tb1,
+(SELECT visited_on, SUM(amount) AS s FROM Customer GROUP BY 1) tb2
+WHERE DATEDIFF(tb1.visited_on, tb2.visited_on) BETWEEN 0 AND 6
+GROUP BY tb1.visited_on
+HAVING COUNT(tb2.visited_on) = 7

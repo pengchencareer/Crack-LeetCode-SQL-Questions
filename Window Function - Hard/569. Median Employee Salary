@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+WITH tb1 AS(SELECT Id, Company, Salary,
+COUNT(Id) OVER(PARTITION BY Company) AS ct,
+ROW_NUMBER() OVER(PARTITION BY Company ORDER BY Salary) AS rn
+FROM Employee)
+
+SELECT Id, Company, Salary
+FROM tb1
+WHERE (ct%2=0 AND (rn=ct/2 OR rn=ct/2+1)) OR (ct%2=1 AND rn=ROUND(ct/2,0))
+ORDER BY 2, 3, 1

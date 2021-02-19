@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+#Note: 1. 1 post could have been viewed multi times before removal
+#2. Only count those days with report spam
+SELECT ROUND(AVG(pert), 2) AS average_daily_percent
+FROM
+(SELECT action_date, ROUND(COUNT(DISTINCT r.post_id) / COUNT(DISTINCT a.post_id)*100, 2) AS pert
+FROM Actions a LEFT JOIN Removals r
+ON a.post_id = r.post_id
+WHERE a.action = 'report' 
+AND a.extra = 'spam'
+GROUP BY action_date) sub

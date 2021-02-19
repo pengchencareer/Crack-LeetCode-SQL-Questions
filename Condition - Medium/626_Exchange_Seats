@@ -1,0 +1,13 @@
+# Write your MySQL query statement below
+#Assume id is the primary key, and start from 1.
+#Assume there is no id without student sitting in the table
+SELECT 
+CASE
+    WHEN id=(SELECT COUNT(*) FROM seat) AND id%2=1 THEN id
+    WHEN id%2=1 THEN id+1
+    WHEN id%2=0 THEN id-1
+    ELSE NULL
+END AS id,
+student
+FROM seat
+ORDER BY id

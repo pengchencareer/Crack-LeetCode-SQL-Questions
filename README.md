@@ -8,12 +8,10 @@ Coming Plan:
 4. Good Luck for the future!
 
 
-Last updated: 10:34 Feb 18, 2021 EST
+Last updated: 04:00 Feb 19, 2021 EST
 
-No. of SQL questions uploaded so far: 40/149
+No. of SQL questions uploaded so far: 80/149
 
 No. of SQL Instruction added so far: 0/149
 
 Update based on: Frequency.
-
-

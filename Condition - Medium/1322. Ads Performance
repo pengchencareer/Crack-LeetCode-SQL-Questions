@@ -1,0 +1,13 @@
+# Write your MySQL query statement below
+WITH tb1 AS(SELECT ad_id, 
+SUM(action = 'Clicked') AS ttl_cl,
+SUM(action = 'Viewed') AS ttl_vi
+ FROM Ads
+ GROUP BY ad_id)
+
+SELECT ad_id, 
+(CASE WHEN ttl_cl + ttl_vi = 0 THEN ROUND(0,2)
+      ELSE ROUND(ttl_cl/(ttl_cl+ttl_vi) * 100, 2)
+END) AS ctr
+FROM tb1
+ORDER BY 2 DESC, 1

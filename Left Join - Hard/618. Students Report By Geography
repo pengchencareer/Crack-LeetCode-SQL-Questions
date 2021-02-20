@@ -1,0 +1,14 @@
+# Write your MySQL query statement below
+SELECT America, Asia, Europe
+FROM
+(SELECT name AS America, ROW_NUMBER() OVER(ORDER BY name) AS rn
+FROM student
+WHERE continent = 'America') AS am
+LEFT JOIN
+(SELECT name AS Asia, ROW_NUMBER() OVER(ORDER BY name) AS rn
+FROM student
+WHERE continent = 'Asia') AS aa ON am.rn=aa.rn
+LEFT JOIN
+(SELECT name AS Europe, ROW_NUMBER() OVER(ORDER BY name) AS rn
+FROM student
+WHERE continent = 'Europe') AS eu ON am.rn=eu.rn

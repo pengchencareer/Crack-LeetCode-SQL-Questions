@@ -1,0 +1,23 @@
+# Write your MySQL query statement below
+# SELECT e.student_id, MIN(e.course_id) AS course_id, e.grade
+# FROM
+# (SELECT student_id, MAX(grade) AS grade
+# FROM Enrollments
+# GROUP BY 1) sub JOIN Enrollments e
+# ON sub.student_id = e.student_id 
+# WHERE sub.grade = e.grade
+# GROUP BY 1, 3
+# ORDER BY 1
+
+WITH tb1 AS(
+SELECT student_id, MAX(grade) AS grade
+FROM Enrollments
+GROUP BY 1
+)
+
+SELECT e.student_id, MIN(e.course_id) AS course_id, e.grade
+FROM tb1 JOIN Enrollments e
+ON tb1.student_id = e.student_id 
+WHERE tb1.grade = e.grade
+GROUP BY 1, 3
+ORDER BY 1

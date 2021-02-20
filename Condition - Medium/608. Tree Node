@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+SELECT id, 
+(CASE WHEN p_id IS NULL THEN 'Root'
+      WHEN id NOT IN (SELECT p_id FROM tree WHERE p_id IS NOT NULL) THEN 'Leaf'  
+      ELSE 'Inner'
+END) 
+AS Type
+FROM tree
+ORDER BY 1
+
+#WHERE p_id IS NOT NULL is necessary, because '3 is NOT IN [1,2,null]' = false 

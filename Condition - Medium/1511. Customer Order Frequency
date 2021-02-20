@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+SELECT c.customer_id AS customer_id, name
+FROM Customers c JOIN Orders o
+ON c.customer_id = o.customer_id
+JOIN Product p
+ON o.product_id = p.product_id
+GROUP BY 1
+HAVING SUM(CASE WHEN LEFT(order_date,7) = '2020-06' THEN quantity*price ELSE 0 END) >= 100
+AND SUM(CASE WHEN LEFT(order_date,7) = '2020-07' THEN quantity*price ELSE 0 END) >= 100

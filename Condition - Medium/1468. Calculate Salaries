@@ -1,0 +1,23 @@
+# Write your MySQL query statement below
+# WITH tb1 AS(SELECT company_id, MAX(salary) AS ms
+# FROM Salaries
+# GROUP BY 1)
+
+# SELECT s.company_id, s.employee_id, s.employee_name,
+# ROUND((CASE WHEN ms < 1000 THEN salary
+#       WHEN ms < 10000 THEN (1-24/100)*salary
+#       ELSE (1-49/100)*salary
+# END),0) AS salary
+# FROM Salaries s JOIN tb1 
+# ON s.company_id = tb1.company_id
+
+#Methods Window function
+SELECT company_id, employee_id, employee_name, 
+ROUND(CASE WHEN tb1.ms < 1000 THEN salary
+      WHEN tb1.MS <= 10000 THEN 0.76*salary
+      ELSE 0.51*salary
+END, 0) AS salary
+FROM
+(SELECT company_id, employee_id, employee_name, salary,
+MAX(salary) OVER(PARTITION BY company_id) AS ms
+FROM Salaries) tb1

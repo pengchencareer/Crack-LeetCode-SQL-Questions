@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+WITH tb1 AS (SELECT username, activity, startDate, endDate,
+COUNT(username) OVER(PARTITION BY username) AS ct,
+ROW_NUMBER() OVER(PARTITION BY username ORDER BY endDate DESC) AS rn
+FROM UserActivity)
+
+SELECT username, activity, startDate, endDate
+FROM tb1
+WHERE (ct>1 AND rn=2) OR (ct=1)

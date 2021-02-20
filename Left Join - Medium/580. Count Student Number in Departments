@@ -1,0 +1,6 @@
+# Write your MySQL query statement below
+SELECT dept_name, IFNULL(COUNT(student_id),0) AS student_number
+FROM department d LEFT JOIN student s
+ON d.dept_id = s.dept_id
+GROUP BY 1
+ORDER BY 2 DESC, 1

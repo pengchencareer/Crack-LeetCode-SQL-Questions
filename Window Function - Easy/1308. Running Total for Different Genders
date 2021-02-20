@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+# SELECT s1.gender AS gender, s1.day AS day, SUM(s2.score_points) AS total
+# FROM Scores s1 JOIN Scores s2
+# ON s1.gender = s2.gender
+# WHERE s2.day <= s1.day
+# GROUP BY 1, 2
+# ORDER BY 1, 2
+
+SELECT gender, day, 
+       SUM(score_points) OVER(PARTITION BY gender ORDER BY day) AS total
+FROM Scores

@@ -1,0 +1,8 @@
+# Write your MySQL query statement below
+WITH tb1 AS(SELECT customer_id, order_id, order_date, ROW_NUMBER() OVER(PARTITION BY customer_id ORDER BY order_date DESC) AS rk
+FROM Orders)
+
+SELECT name AS customer_name, c.customer_id, order_id, order_date
+FROM tb1 JOIN Customers c ON tb1.customer_id = c.customer_id
+WHERE rk <= 3
+ORDER BY 1, 2, 4 DESC

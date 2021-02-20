@@ -1,0 +1,6 @@
+# Write your MySQL query statement below
+SELECT DISTINCT buyer_id
+FROM Sales s JOIN Product p
+ON s.product_id = p.product_id
+WHERE product_name = 'S8'
+AND buyer_id NOT IN (SELECT buyer_id FROM Product p2 JOIN Sales s2 ON p2.product_id = s2.product_id WHERE product_name = 'iphone')

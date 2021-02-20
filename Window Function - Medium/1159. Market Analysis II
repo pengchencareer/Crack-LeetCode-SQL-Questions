@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+WITH tb1 AS
+(SELECT seller_id, item_id,
+ROW_NUMBER() OVER(PARTITION BY seller_id ORDER BY order_date) AS rn
+FROM Orders) 
+
+SELECT user_id AS seller_id,
+(CASE WHEN favorite_brand = item_brand THEN 'yes' ELSE 'no' END) AS 2nd_item_fav_brand
+FROM Users u LEFT JOIN tb1 ON user_id = seller_id AND rn=2
+LEFT JOIN Items i ON tb1.item_id = i.item_id
+ORDER BY 1

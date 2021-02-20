@@ -1,0 +1,19 @@
+# Write your MySQL query statement below
+SELECT user_id, MAX(diff) AS biggest_window
+FROM
+(SELECT user_id, 
+DATEDIFF(LEAD(visit_date, 1, '2021-1-1') OVER(PARTITION BY user_id ORDER BY visit_date), visit_date) AS diff
+FROM UserVisits) tb1
+GROUP BY 1
+ORDER BY 1
+
+
+# UNION
+
+# SELECT tb1.user_id AS user_id, DATEDIFF('2021-1-1', tb1.visit_date) AS d1
+# FROM
+# (SELECT user_id, visit_date, ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY visit_date DESC) AS rn
+# FROM UserVisits) tb1
+# WHERE tb1.rn = 1 
+# GROUP BY 1
+

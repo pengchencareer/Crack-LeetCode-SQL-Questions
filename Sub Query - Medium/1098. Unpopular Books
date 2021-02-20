@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+SELECT book_id, name
+FROM Books
+WHERE available_from < '2019-05-23'
+AND book_id NOT IN 
+(SELECT book_id
+FROM Orders
+WHERE DATEDIFF('2019-06-23', dispatch_date) BETWEEN 0 AND 365 
+GROUP BY 1
+HAVING SUM(quantity) >= 10)

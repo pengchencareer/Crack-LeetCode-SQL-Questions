@@ -1,0 +1,15 @@
+# Write your MySQL query statement below
+# WITH tb1 AS
+# (SELECT team_id, COUNT(DISTINCT employee_id) AS team_size
+# FROM Employee
+# GROUP BY team_id)
+
+# SELECT employee_id, team_size
+# FROM Employee e JOIN tb1
+# ON e.team_id = tb1.team_id
+
+#Windows function
+
+Select employee_id,
+COUNT(employee_id) OVER(PARTITION BY team_id) AS team_size
+FROM Employee

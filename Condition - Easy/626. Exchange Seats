@@ -7,3 +7,6 @@ SELECT
     student
 FROM seat
 ORDER BY 1;
+
+#exchanging id is easier than exchanging student name.
+#3 condition: id is odd, id is even, and id is odd& it is the last one and not need to be changed.

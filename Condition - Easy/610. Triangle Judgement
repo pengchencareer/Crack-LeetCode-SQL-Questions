@@ -4,3 +4,6 @@ CASE
     ELSE 'No'
 END AS triangle
 FROM triangle
+
+#Easy Case-When question.
+#return as a new column.

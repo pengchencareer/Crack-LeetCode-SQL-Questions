@@ -2,3 +2,5 @@
 SELECT product_name, year, price
 FROM Sales s JOIN Product p
 ON s.product_id = p.product_id
+
+#Just need an inner join to connect the 2 tables to return everything

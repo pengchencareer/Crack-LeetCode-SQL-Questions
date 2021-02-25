@@ -7,3 +7,5 @@ Instruction completed:
 DML
 Easy
 Regexo
+
+Condition Easy

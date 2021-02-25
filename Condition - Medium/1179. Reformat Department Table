@@ -15,3 +15,5 @@ SUM(CASE WHEN month='Dec' THEN revenue ELSE NULL END) AS 'Dec_Revenue'
 FROM Department
 GROUP BY id
 ORDER BY id
+
+#Sum(CASE-WHEN) as 'Jan_Revenue'.

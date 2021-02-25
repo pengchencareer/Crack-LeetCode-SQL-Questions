@@ -6,3 +6,5 @@ DENSE_RANK() OVER(ORDER BY COUNT(*) DESC) AS rk
 FROM Project
 GROUP BY project_id) sub
 WHERE rk = 1
+
+#Dense_Rank() return ranking without 'hole' in case of tie.

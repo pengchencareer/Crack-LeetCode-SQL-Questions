@@ -10,4 +10,4 @@ Regexo
 
 Condition Easy
 Condition- medium(4)
-
+Window function - easy

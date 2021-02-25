@@ -4,3 +4,5 @@ SET sex = CASE
     WHEN sex='f' THEN 'm'
     ELSE NULL
 END
+
+#Easy case-when question

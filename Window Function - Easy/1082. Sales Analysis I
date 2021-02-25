@@ -5,3 +5,6 @@ FROM
 FROM Sales
 GROUP BY seller_id) sub
 WHERE rk = 1
+
+#Dense_rank() return ranking without 'hole'
+#it can be also solved with sub-query: select the highest price, then select sellers whose selling prices are equal to the highest price.

@@ -5,3 +5,9 @@ ON t.content_id = c.content_id
 WHERE Kids_content = 'Y'
 AND content_type = 'Movies'
 AND program_date LIKE '2020-06%'
+
+#Simple 'where' question
+#Need an inner join to connect the 2 tables
+#Several ways to deal with 'June, 2020': 
+#1. LEFT(program_date,7) = '2020-06'
+#2. SUBSTRING(program_date, 1, 7) = '2020-06'

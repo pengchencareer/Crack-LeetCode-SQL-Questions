@@ -1,9 +1,22 @@
 # Write your MySQL query statement below
-SELECT LEFT(t.trans_date, 7) AS month, country, 
-SUM(state = 'approved') AS approved_count,
+WITH tb1 AS
+(SELECT * 
+FROM Transactions
+WHERE state='approved' # this is for filtering out those rows with all zeros, returned by 'declined' state. If setting it to 'approved', then those with 0 approved and 0 chargebacks are filtered out.
+UNION ALL
+ 
+SELECT trans_id, country, 'cb' AS state, amount, c.trans_date
+FROM Transactions t JOIN Chargebacks c
+ON t.id = c.trans_id)
+
+SELECT LEFT(trans_date, 7) AS month, country, 
+SUM(state='approved') AS approved_count, 
 SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_amount,
-COUNT(trans_id IS NOT NULL) AS chargeback_count,
-SUM(CASE WHEN trans_id IS NOT NULL THEN amount END) AS chargeback_amount
-FROM Transactions t LEFT JOIN Chargebacks c
-ON t.id = c.trans_id
+SUM(state='cb') AS chargeback_count,
+SUM(CASE WHEN state='cb' THEN amount ELSE 0 END) AS chargeback_amount
+FROM tb1
 GROUP BY 1, 2
+
+#1. Get the 'amount' for 'chargeback' based on id
+#2. Union the 'chargeback' table with the main table
+#3. Group by - Case When

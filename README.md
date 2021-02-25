@@ -1,4 +1,4 @@
-LeetCode SQL Questions Summary & Instruction
+LeetCode SQL Questions Summary & Instructions
 ------------------------------------------------------------------
 Here are all the solutions of SQL questions in LeetCode. They are grouped into different folders mainly based on their categories and complexities.
 The main purpose of the repository is for self-leanring and self-instruction for those who want to learn SQL quickly and those who want to crach SQL interviews.

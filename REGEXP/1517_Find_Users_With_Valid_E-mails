@@ -2,3 +2,16 @@
 SELECT *
 FROM Users
 WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9\-\.\_]*@leetcode\.com$'
+
+#Easy question, but need to know REGEXP
+#^ -> beginner
+#[A-Z]
+#[a-z]
+#[0-9]
+#\-\.\-
+#* -> preceding: 0 or more...
+#? -> preceding: 0 or 1...
+#+ -> preceding: 1 or more...
+#$ -> ending
+#| -> or
+#.{12} -> repeat . for 12 times

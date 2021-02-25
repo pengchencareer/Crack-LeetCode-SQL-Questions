@@ -1,5 +1,12 @@
+#1. Use Limit, Offset clause
+
 Select(Select Distinct Salary
 From Employee
 Order By Salary DESC
 Limit 1,1)
 as SecondHighestSalary
+
+#2. Use sub-query
+SELECT MAX(Salary) as SecondHighestSalary
+FROM Employee
+WHERE Salary < (SELECT MAX(Salary) FROM Employee)

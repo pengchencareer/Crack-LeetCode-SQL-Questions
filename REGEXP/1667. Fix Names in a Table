@@ -3,4 +3,5 @@ SELECT user_id, CONCAT(UPPER(SUBSTRING(name, 1 ,1)), LOWER(SUBSTRING(name, 2, le
 FROM Users
 ORDER BY 1
 
-#IN MySQL, substring starts from 1 instead of 0.
+#IN MySQL, substring index starts from 1, not 0.
+#CONCAT clause

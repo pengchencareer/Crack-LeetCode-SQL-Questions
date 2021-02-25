@@ -1,4 +1,4 @@
-LeetCode SQL Summary
+LeetCode SQL Questions Summary & Instruction
 ------------------------------------------------------------------
 ALL 149 LeetCode SQL questions until Feb 17, 2021.
 

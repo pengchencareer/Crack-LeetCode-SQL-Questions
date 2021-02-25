@@ -1,3 +1,5 @@
+#1. Limit, Offest clause
+
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
 DECLARE m INT;
@@ -9,3 +11,16 @@ SET m = n - 1;
       ORDER BY Salary DESC LIMIT m, 1
   );
 END
+
+#2. Sub-query
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+  RETURN (
+      # Write your MySQL query statement below.
+      SELECT MIN(Salary) AS getNthHighestSalary
+      FROM Employee
+      WHERE Salary IN (SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC LIMIT N)
+  );
+END
+
+#Select the top N highest salary and then select the minimum of the N salaries.

@@ -4,3 +4,6 @@ FROM Employee e1 JOIN Employee e2
 ON e1.Id = e2.ManagerId
 GROUP BY e2.ManagerId
 HAVING COUNT(e2.Id) >= 5
+
+#Connect with 2 tables by id and managerid
+#set condition by count

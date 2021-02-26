@@ -4,3 +4,6 @@ FROM LogInfo l1 JOIN LogInfo l2
 ON l1.account_id = l2.account_id
 WHERE (l1.login BETWEEN l2.login AND l2.logout AND l1.ip_address != l2.ip_address)
 OR (l2.login BETWEEN l1.login AND l1.logout AND l1.ip_address != l2.ip_address)
+
+#different ip_address
+#some [login,logout] will interact with other [login,logout].

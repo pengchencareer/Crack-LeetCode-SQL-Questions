@@ -9,5 +9,6 @@ Easy
 Regexo
 
 Condition Easy
-Condition- medium(4)
+Condition - Medium(4)
 Window function - easy
+Self Join - Easy

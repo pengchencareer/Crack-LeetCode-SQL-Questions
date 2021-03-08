@@ -4,3 +4,5 @@ FROM Users u LEFT JOIN Rides r
 ON u.id = r.user_id
 GROUP BY 1
 ORDER BY 2 DESC, name
+
+#Users is the major table, return 0 if without any ride.

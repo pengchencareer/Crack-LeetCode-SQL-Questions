@@ -14,3 +14,5 @@ UNION
 SELECT '15 or more' AS bin, COUNT(session_id) AS total
 FROM Sessions 
 WHERE duration/60 >= 15
+
+#Tables need to be contanated vertically -> UNION

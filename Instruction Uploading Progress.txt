@@ -12,3 +12,5 @@ Condition Easy
 Condition - Medium(4)
 Window function - easy
 Self Join - Easy
+
+Left-Join

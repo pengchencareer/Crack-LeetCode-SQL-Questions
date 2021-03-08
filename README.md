@@ -6,6 +6,6 @@ Hence, the instruction and thinking flow for each question will be provided and 
 
 _No. of SQL solutions uploaded: 149/149_
 
-_No. of SQL instruction uploaded: 32/149_
+_No. of SQL instruction uploaded: 37/149_
 
-_Last updated: 20:12 Feb 25, 2021 EST_
+_Last updated: 14:51 Mar 8, 2021 EST_

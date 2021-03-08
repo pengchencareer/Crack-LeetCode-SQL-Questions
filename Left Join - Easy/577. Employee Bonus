@@ -3,3 +3,6 @@ SELECT name, bonus
 FROM Employee e LEFT JOIN Bonus b
 ON e.empId = b.empId
 WHERE bonus < 1000 OR bonus IS NULL
+
+#Thinking of bonus could be null, which should be also included in the result.
+#So we need to use left join - Employee is the major table.
